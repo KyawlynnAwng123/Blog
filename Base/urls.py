@@ -22,3 +22,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('',views.index,name="indexpage")
 ]
+
+admin.site.index_title="Blog Site"
+admin.site.site_header="Blog Site Admin"
+admin.site.site_title="Blog Site "
