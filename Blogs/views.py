@@ -1,3 +1,38 @@
-from django.shortcuts import render
+from django.shortcuts import render,get_object_or_404,redirect
+from django.http import HttpResponse
+from .models import Blog,Category
 
 # Create your views here.
+
+# start post by category
+def post_by_category(request,category_id):
+    
+    
+    posts=Blog.objects.filter(category=category_id)
+    try:
+        category=Category.objects.get(pk=category_id)
+    except:
+        return redirect('indexpage')
+    # category=get_object_or_404(Category,pk=category_id)
+    context={
+        'posts':posts,
+        
+    }
+    return render(request,'frontend/pages/post_by_category.html',context)
+# end
+
+# start python
+def python(request):
+    categories=Category.objects.all()
+    featured_posts=Blog.objects.filter(is_featured=True,status='1').order_by('-updated')
+    python=Blog.objects.filter(category_id=5)
+    
+    context={
+        'featured_posts':featured_posts,
+        'categories':categories,
+        'python':python
+        }
+    return render(request,'frontend/pages/python.html',context) 
+# end python
+
+
