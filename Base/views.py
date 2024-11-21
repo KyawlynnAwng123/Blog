@@ -1,15 +1,21 @@
 from django.http import HttpResponse
-
 from django.shortcuts import render
 from Blogs.models import *
 
 def index(request):
-    choices=STATUS_CHOICES
-    print(type(choices))
-    for k,v in choices.items():
-        print(v)
+    categories=Category.objects.all()
+    featured_posts=Blog.objects.filter(is_featured=True,status='1').order_by('-updated')
+    posts=Blog.objects.filter(is_featured=False,status='1')
     
-    return render(request,'frontend/pages/index.html')
+   
+    
+    context={
+        'categories':categories,
+        'featured_posts':featured_posts,
+        'posts':posts
+        
+        }
+    return render(request,'frontend/pages/index.html',context)
 
 
 
