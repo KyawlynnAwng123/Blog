@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-k+3+r-nqbo3^9onp3#wj2@35zk)m)4_fk-b((#+r5kk1ugr!nm'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
@@ -63,7 +63,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'Blogs.context_processors.get_category'
+                'Blogs.context_processors.get_category',
+                'Blogs.context_processors.get_sociallink'
             ],
         },
     },
@@ -118,11 +119,15 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
 STATIC_URL = 'static/'
-STAFICFILES_DIRS= BASE_DIR / 'Base/static'
+STATIC_ROOT= BASE_DIR /'staticfiles'
+STATICFILES_DIRS=[
+    'Base/static/'
+   
+]
 
 
 MEDIA_URL = '/media/'
-MEDIA_ROOT = BASE_DIR / 'upload-images'
+MEDIA_ROOT = BASE_DIR /'upload-images'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field

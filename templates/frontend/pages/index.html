@@ -60,8 +60,13 @@
         <div class="p-3">
           <h4 class="font-italic">Follow Us</h4>
           <ol class="list-unstyled">
-            <li><a href="#">GitHub</a></li>
-            <li><a href="#">LinkedIn</a></li>
+           
+           {% for social in sociallinks  %}
+           <li><a href="{{social.link}}">{{social.paltform}}</a></li>
+
+            
+           {% endfor %}
+            
           </ol>
         </div>
       </aside><!-- /.blog-sidebar -->
