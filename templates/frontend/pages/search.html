@@ -1,0 +1,16 @@
+{% extends 'frontend/base.html' %}
+
+
+{% block content %}
+
+{% if search_posts %}
+{% for post  in search_posts  %}
+<h5>Your search result: <h5 style="color: green;">{{post.title}}</h1></h5>
+{% endfor %}
+{% else %}
+<div>
+    <h1>Sorry! your search result <b style="color: red;">{{new_keyword}}</b> not found</h1>
+</div>
+{% endif %}
+{% endblock content %}
+    

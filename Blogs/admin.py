@@ -3,7 +3,7 @@ from .models import *
 
 # Register your models here.
 class BlogAdmin(admin.ModelAdmin):
-    # prepopulated_fields={'slug':('title',)}
+    prepopulated_fields={'slug':('title',)}
     list_display=['title','slug','status','is_featured','category']
     list_editable=('is_featured',)
     list_display_links=['category']
@@ -12,4 +12,5 @@ class BlogAdmin(admin.ModelAdmin):
     search_fields=['title','category__name']
 
 admin.site.register(Category)
+admin.site.register(SocialLink)
 admin.site.register(Blog,BlogAdmin)
